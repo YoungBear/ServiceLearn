@@ -16,8 +16,10 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".service.MyService"/>
+        <service android:name=".service.MyService"/>
+
+        <activity android:name=".activity.SecondActivity">
+        </activity>
     </application>
 
 </manifest>

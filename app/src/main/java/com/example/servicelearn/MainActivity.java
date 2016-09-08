@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.servicelearn.activity.SecondActivity;
 import com.example.servicelearn.service.MyService;
 
 public class MainActivity extends Activity {
@@ -19,6 +20,7 @@ public class MainActivity extends Activity {
     private Button btnStopService;
     private Button btnBindService;
     private Button btnUnbindService;
+    private Button btnStartSecondActivity;
 
     private MyService.DownloadBinder downloadBinder;
 
@@ -51,10 +53,50 @@ public class MainActivity extends Activity {
         btnBindService = (Button) findViewById(R.id.btn_bind_service);
         btnUnbindService = (Button) findViewById(R.id.btn_unbind_service);
 
+        btnStartSecondActivity = (Button) findViewById(R.id.btn_start_second_activity);
+
         btnStartService.setOnClickListener(btnOnClickListener);
         btnStopService.setOnClickListener(btnOnClickListener);
         btnBindService.setOnClickListener(btnOnClickListener);
         btnUnbindService.setOnClickListener(btnOnClickListener);
+
+        btnStartSecondActivity.setOnClickListener(btnOnClickListener);
+    }
+
+    @Override
+    protected void onStart() {
+        Log.d(TAG, "onStart...");
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.d(TAG, "onRestart...");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d(TAG, "onResume...");
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d(TAG, "onPause...");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d(TAG, "onStop...");
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "onDestroy...");
+        super.onDestroy();
     }
 
     private View.OnClickListener btnOnClickListener = new View.OnClickListener() {
@@ -76,10 +118,11 @@ public class MainActivity extends Activity {
                 case R.id.btn_unbind_service:
                     unbindService(connection);
                     break;
+                case R.id.btn_start_second_activity:
+                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    startActivity(intent);
                 default:break;
             }
         }
     };
-
-
 }
